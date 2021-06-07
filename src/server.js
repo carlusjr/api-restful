@@ -1,13 +1,13 @@
 const express = require("express");
 //const path = require("path");
 
-//const db = require("./database");
+const db = require("./database/db");
 const routes = require("./routes/routes");
 
 const app = express();
 
 // Conectando bando de dados MongoDB
-//db.connectMongoDB();
+db.connectMongoDB();
 
 
 // definindo que o servidor vai receber dados de forms enviados pelo método POST
