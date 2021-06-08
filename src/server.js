@@ -6,12 +6,12 @@ const routes = require("./routes/routes");
 
 const app = express();
 
+// Habilita servidor para receber JSON
+app.use(express.json());
+
 // Conectando bando de dados MongoDB
 db.connectMongoDB();
 
-
-// definindo que o servidor vai receber dados de forms enviados pelo método POST
-app.use(express.urlencoded({ extended: true }));
 
 // definindo rotas atendidas pelo servidor
 app.use("/api", routes);

@@ -10,7 +10,7 @@ const router = require("express").Router();
 const ProductsController = require("../controllers/products");
 
 router.get("/products/:id?", ProductsController.get); // ? na rota indica que o parâmetro é opcional
-//router.get("/products", ProductsController.post);
+router.post("/products", ProductsController.post);
 //router.get("/products/:id", ProductsController.put);
 //router.get("/products/:id", ProductsController.delete);
 
