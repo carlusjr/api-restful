@@ -22,7 +22,9 @@ async function put(req, res) {
   const { id } = req.params;
 
   // O parâmetro new: true retorna o produto já alterado
-  const product = await ProductsModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
+  const product = await ProductsModel.findOneAndUpdate({ _id: id }, req.body, {
+    new: true,
+  });
 
   /* Outra forma de fazer update no registro
   const product = await ProductsModel.findById(id);
@@ -35,8 +37,19 @@ async function put(req, res) {
   }
 }
 
+async function del(req, res) {
+  const { id } = req.params;
+  const removed = await ProductsModel.deleteOne({ _id: id });  
+  if (removed.ok) {
+    res.send({ message: "Produto excluído com sucesso!" });
+  } else {
+    res.status(500).send({ message: "Não foi possível excluir o produto" });
+  }
+}
+
 module.exports = {
   get,
   post,
   put,
+  del,
 };
